@@ -1,0 +1,54 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <section class="api">
+        <div class="container">
+            <form method="get">
+              <input type="url" name="repolink">
+              <button type="submit">Link to Github repository</button>
+            </form>
+              {% if search_result %}
+                {% if search_result.success %}
+                    <div>
+                        <h4>Details of issues in {{search_result.repo_name}} repository </h4>
+                    </div>
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th> Issue Update Status </th>
+                        <th> Number of Issues </th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Total number of open issues </td>
+                        <td>{{ search_result.total_open_issues }} </td>
+                      </tr>
+                      <tr>
+                        <td>Number of open issues that were opened in the last 24 hours </td>
+                        <td>{{ search_result.total_issues_updated_today }} </td>
+                      </tr>
+                      <tr>
+                        <td>Number of open issues that were opened more than 24 hours ago but less than 7 days ago </td>
+                        <td>{{ search_result.total_issues_updated_this_week }} </td>
+                      </tr>
+                      <tr>
+                        <td>Number of open issues that were opened more than 7 days ago </td>
+                        <td>{{ search_result.issues_updated_earlier }} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                {% else %}
+                  <p><em>{{ search_result.message }}</em></p>
+                {% endif %}
+              {% endif %}
+        </div>
+    </section>
+</body>
+</html>
