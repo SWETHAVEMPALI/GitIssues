@@ -5,7 +5,7 @@ from github import Github, GithubException
 
 def github(request):
     search_result = {}
-    client = Github('SWETHAVEMPALI', 'am115.95', per_page=100)
+    client = Github()
     if 'repolink' in request.GET:
         repo_link = request.GET['repolink']
         if repo_link:
