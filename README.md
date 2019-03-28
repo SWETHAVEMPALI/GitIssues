@@ -7,7 +7,7 @@ Similarly fetch the open issues updated in the last 7 days.
 Filter out the pull requests from the results of steps 3,4 and 5. This is because get_issues returns issues plus pull requests. 
 Get the count of these 3 results. 
 Subtraction of issues updated in the last 24 hours and last 7 days from the total open issues gives us the open issues updated before 7 days.
-Get the count of results found in steps 3,4,5 and 7 and render it in an html table. 
+Render the results in an html table. 
 
 Web application url:
 https://swethawebapp2.herokuapp.com/
